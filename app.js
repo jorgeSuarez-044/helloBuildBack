@@ -12,6 +12,7 @@ const log = require('./utils/logger');
 const statusRoutes = require('./routes/status');
 const docsRoutes = require('./routes/swagger');
 const dataRoutes = require('./routes/data');
+const gitRoutes = require('./routes/endpointGit');
 const peopleRoutes = require('./routes/people');
 
 const port = process.env.PORT || 8080;
@@ -26,6 +27,7 @@ app.use('/api/', statusRoutes);
 app.use('/api/docs', docsRoutes);
 app.use('/api/data', dataRoutes);
 app.use('/api/people', peopleRoutes);
+app.use('/api/GitRepos', gitRoutes);
 
 if (module === require.main) {
   app.listen(port, () => {

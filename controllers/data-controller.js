@@ -1,7 +1,15 @@
 const { firestoreRef } = require('./../drivers/firestore');
 const { successResponse, errorToResponse } = require('./../utils/responses-handler');
-
+const fetch = require('node-fetch');
 const collectionName = 'random_data';
+
+const endpointGit = async (req, res) => {
+  const { userGit } = req.query;
+  const url = `https://api.github.com/users/${userGit}/repos`;
+  fetch(url)
+    .then(res => res.text())
+    .then(text => res.send(successResponse(text)));
+};
 
 const getItemsFromDb = (req, res) => {
   if (firestoreRef) {
@@ -98,6 +106,7 @@ const deleteItemFromDb = async (req, res) => {
 };
 
 module.exports = {
+  endpointGit,
   getItemsFromDb,
   getItemFromDbById,
   createItemInDb,
