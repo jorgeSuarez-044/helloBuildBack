@@ -1,0 +1,8 @@
+node_modules
+*.log
+config.json
+.idea
+.DS_Store
+.env
+travis*.json
+credentials*.json
